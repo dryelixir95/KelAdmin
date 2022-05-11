@@ -11,6 +11,9 @@
     <link type="text/css" href="{{asset('backend/images/icons/css/font-awesome.css')}}" rel="stylesheet">
     <link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600'
         rel='stylesheet'>
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+
 </head>
 
 <body>
@@ -34,21 +37,17 @@
                         <div class="module">
                             <div class="module-head">
                                 <h3>Tables</h3>
-                                <a style="float:right;
+                                <a href="{{route('user.add')}}" style="float:right;
                                 position: relative;
                                 top: -24px" class="btn btn-mini btn-success">Add User</a>
                             </div>
                             <div class="module-body">
-                                <p>
-                                    <strong>Bordered</strong>
-                                    -
-                                    <small>table class="table table-bordered"</small>
-                                </p>
                                 <table class="table table-bordered">
                                     <thead>
                                         <tr>
                                             <th>Id</th>
                                             <th>Name</th>
+                                            <th>Group</th>
                                             <th>Email</th>
                                             <th>Action</th>
                                         </tr>
@@ -58,10 +57,13 @@
                                         <tr>
                                             <td>{{$key+1}}</td>
                                             <td>{{$user->name}}</td>
+                                            <td>{{$user->usertype}}</td>
                                             <td>{{$user->email}}</td>
                                             <td>
-                                                <a href="" class="btn btn-info">Edit</a>
-                                                <a href="" class="btn btn-danger">Delete</a>
+                                                <a href="{{route('user.edit', $user->id)}}"
+                                                    class="btn btn-info">Edit</a>
+                                                <a href="{{route('user.delete', $user->id)}}" id="delete"
+                                                    class="btn btn-danger">Delete</a>
                                             </td>
 
                                         </tr>
@@ -71,7 +73,7 @@
 
                                 <br />
                                 <!-- <hr /> -->
-                                <br />                                
+                                <br />
                             </div>
                         </div>
                         <!--/.module-->
@@ -110,4 +112,70 @@
         });
 
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+
+    <script>
+        @if(Session::has('message'))
+        toastr.options = {
+            "closeButton": true,
+            "progressBar": true
+        }
+        toastr.success("{{ session('message') }}");
+        @endif
+
+        @if(Session::has('error'))
+        toastr.options = {
+            "closeButton": true,
+            "progressBar": true
+        }
+        toastr.error("{{ session('error') }}");
+        @endif
+
+        @if(Session::has('info'))
+        toastr.options = {
+            "closeButton": true,
+            "progressBar": true
+        }
+        toastr.info("{{ session('info') }}");
+        @endif
+
+        @if(Session::has('warning'))
+        toastr.options = {
+            "closeButton": true,
+            "progressBar": true
+        }
+        toastr.warning("{{ session('warning') }}");
+        @endif
+
+    </script>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script type="text/javascript">
+        $(function () {
+            $(document).on('click', '#delete', function (e) {
+                e.preventDefault();
+                var link = $(this).attr("href");
+
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "You won't be able to revert this!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#790DEB',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href=link
+                        Swal.fire(
+                            'Your data has been deleted.',
+                            'success'
+                        )
+                    }
+                })
+            });
+        });
+
+    </script>
+
 </body>
