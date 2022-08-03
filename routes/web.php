@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Backend\UserController;
+use App\Http\Controllers\Backend\BarangController;
+use App\Http\Controllers\Backend\FilmController;
 
 
 /*
@@ -46,4 +48,22 @@ Route::prefix('users')->group(function(){
     Route::get('/edit/{id}',[UserController::class,'UserEdit'])->name('user.edit');
     Route::post('/update/{id}',[UserController::class,'UserUpdate'])->name('user.update');
     Route::get('/delete/{id}',[UserController::class,'UserDelete'])->name('user.delete');
+});
+
+Route::prefix('barangs')->group(function(){
+    Route::get('/view',[BarangController::class,'BarangView'])->name('barang.view');
+    Route::get('/add',[BarangController::class,'BarangAdd'])->name('barang.add');
+    Route::post('/store',[BarangController::class,'BarangStore'])->name('barang.store');
+    Route::get('/edit/{id}',[BarangController::class,'BarangEdit'])->name('barang.edit');
+    Route::post('/update/{id}',[BarangController::class,'BarangUpdate'])->name('barang.update');
+    Route::get('/delete/{id}',[BarangController::class,'BarangDelete'])->name('barang.delete');
+});
+
+Route::prefix('films')->group(function(){
+    Route::get('/view',[FilmController::class,'FilmView'])->name('film.view');
+    Route::get('/add',[FilmController::class,'FilmAdd'])->name('film.add');
+    Route::post('/store',[FilmController::class,'FilmStore'])->name('film.store');
+    Route::get('/edit/{id}',[FilmController::class,'FilmEdit'])->name('film.edit');
+    Route::post('/update/{id}',[FilmController::class,'FilmUpdate'])->name('film.update');
+    Route::get('/delete/{id}',[FilmController::class,'FilmDelete'])->name('film.delete');
 });
