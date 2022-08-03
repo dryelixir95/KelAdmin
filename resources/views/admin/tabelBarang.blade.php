@@ -36,33 +36,35 @@
 
                         <div class="module">
                             <div class="module-head">
-                                <h3>Tables</h3>
-                                <a href="{{route('user.add')}}" style="float:right;
+                                <h3>Tables Barang</h3>
+                                <a href="{{route('barang.add')}}" style="float:right;
                                 position: relative;
-                                top: -24px" class="btn btn-mini btn-success">Add User</a>
+                                top: -24px" class="btn btn-mini btn-success">Add Film</a>
                             </div>
                             <div class="module-body">
                                 <table class="table table-bordered">
                                     <thead>
                                         <tr>
                                             <th>Id</th>
-                                            <th>Name</th>
-                                            <th>Group</th>
-                                            <th>Email</th>
+                                            <th>Nama</th>
+                                            <th>Jumlah</th>
+                                            <th>Harga</th>
+                                            <th>Total Harga</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach($allDataUser as $key => $user)
+                                        @foreach($allDataBarang as $key => $Barang)
                                         <tr>
                                             <td>{{$key+1}}</td>
-                                            <td>{{$user->name}}</td>
-                                            <td>{{$user->usertype}}</td>
-                                            <td>{{$user->email}}</td>
+                                            <td>{{$Barang->nama}}</td>
+                                            <td>{{$Barang->jumlah}}</td>
+                                            <td>{{$Barang->harga}}</td>
+                                            <td>{{($Barang->total)}}</td>
                                             <td>
-                                                <a href="{{route('user.edit', $user->id)}}"
+                                                <a href="{{route('barang.edit', $Barang->id)}}"
                                                     class="btn btn-info">Edit</a>
-                                                <a href="{{route('user.delete', $user->id)}}" id="delete"
+                                                <a href="{{route('barang.delete', $Barang->id)}}" id="delete"
                                                     class="btn btn-danger">Delete</a>
                                             </td>
 

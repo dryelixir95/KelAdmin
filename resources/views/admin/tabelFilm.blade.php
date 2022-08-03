@@ -36,33 +36,33 @@
 
                         <div class="module">
                             <div class="module-head">
-                                <h3>Tables</h3>
-                                <a href="{{route('user.add')}}" style="float:right;
+                                <h3>Tables Film</h3>
+                                <a href="{{route('film.add')}}" style="float:right;
                                 position: relative;
-                                top: -24px" class="btn btn-mini btn-success">Add User</a>
+                                top: -24px" class="btn btn-mini btn-success">Add Film</a>
                             </div>
                             <div class="module-body">
                                 <table class="table table-bordered">
                                     <thead>
                                         <tr>
                                             <th>Id</th>
-                                            <th>Name</th>
-                                            <th>Group</th>
-                                            <th>Email</th>
+                                            <th>Judul</th>
+                                            <th>Tahun</th>
+                                            <th>Sutradara</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach($allDataUser as $key => $user)
+                                        @foreach($allDataFilm as $key => $Film)
                                         <tr>
                                             <td>{{$key+1}}</td>
-                                            <td>{{$user->name}}</td>
-                                            <td>{{$user->usertype}}</td>
-                                            <td>{{$user->email}}</td>
+                                            <td>{{$Film->judul}}</td>
+                                            <td>{{$Film->tahun}}</td>
+                                            <td>{{$Film->sutradara}}</td>
                                             <td>
-                                                <a href="{{route('user.edit', $user->id)}}"
+                                                <a href="{{route('film.edit', $Film->id)}}"
                                                     class="btn btn-info">Edit</a>
-                                                <a href="{{route('user.delete', $user->id)}}" id="delete"
+                                                <a href="{{route('film.delete', $Film->id)}}" id="delete"
                                                     class="btn btn-danger">Delete</a>
                                             </td>
 

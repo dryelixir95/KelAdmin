@@ -8,7 +8,9 @@
                     11</b> </a></li>
         <li><a href="task.html"><i class="menu-icon icon-tasks"></i>Tasks <b class="label orange pull-right">
                     19</b> </a></li>
-        <li><a href="{{route('table')}}"><i class="menu-icon icon-table"></i>Tables </a></li>
+        <li><a href="{{route('barang.view')}}"><i class="icon-inbox"></i>All Barang </a></li>
+        <li><a href="{{route('film.view')}}"><i class="icon-inbox"></i>Film </a></li>
+
     </ul>
 
     <!--/.widget-nav-->
@@ -17,9 +19,10 @@
                 </i><i class="icon-chevron-down pull-right"></i><i class="icon-chevron-up pull-right">
                 </i>Manage Users </a>
             <ul id="togglePages" class="collapse unstyled">
-                <li><a href="other-user-profile.html"><i class="icon-inbox"></i>Add User </a></li>
+                <li><a href="{{route('user.add')}}"><i class="icon-inbox"></i>Add User </a></li>
                 <li><a href="{{route('user.view')}}"><i class="icon-inbox"></i>All Users </a></li>
             </ul>
         </li>
     </ul>
+
 </div>
