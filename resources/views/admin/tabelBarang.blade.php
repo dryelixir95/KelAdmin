@@ -39,7 +39,7 @@
                                 <h3>Tables Barang</h3>
                                 <a href="{{route('barang.add')}}" style="float:right;
                                 position: relative;
-                                top: -24px" class="btn btn-mini btn-success">Add Film</a>
+                                top: -24px" class="btn btn-mini btn-success">Add barang</a>
                             </div>
                             <div class="module-body">
                                 <table class="table table-bordered">
@@ -56,7 +56,7 @@
                                     <tbody>
                                         @foreach($allDataBarang as $key => $Barang)
                                         <tr>
-                                            <td>{{$key+1}}</td>
+                                            <td>{{$Barang->id}}</td>
                                             <td>{{$Barang->nama}}</td>
                                             <td>{{$Barang->jumlah}}</td>
                                             <td>{{$Barang->harga}}</td>

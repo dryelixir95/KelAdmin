@@ -1,11 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\API\Tugas;
+namespace App\Http\Controllers\API\Barang;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\barang;
+use Illuminate\Support\Facades\DB;
 
-class TugasController extends Controller
+class BarangController extends Controller
 {
     //
     public function getAll(){
@@ -18,14 +20,16 @@ class TugasController extends Controller
 
     public function BarangStore(Request $request){
         $validateData = $request->validate([
-            'name' => 'required',
+            'id' => 'required',
+            'nama' => 'required',
             'jumlah' => 'required',
             'harga' => 'required',
             'total' => 'required'
         ]);
 
         $data=new Barang();
-        $data->nama=$request->name;
+        $data->id=$request->id;
+        $data->nama=$request->nama;
         $data->jumlah=$request->jumlah;
         $data->harga=$request->harga;
         $data->total=($request->harga*$request->jumlah);
@@ -36,7 +40,7 @@ class TugasController extends Controller
 
     public function BarangUpdate(Request $request, $id){
         $validateData = $request->validate([
-            'name' => 'required',
+            'id' => 'required',
             'jumlah' => 'required',
             'harga' => 'required',
             'total' => 'required'
@@ -51,7 +55,7 @@ class TugasController extends Controller
         return response()->json($data, 201);
     }
 
-    public function BarangDelete(Request $request){
+    public function BarangDelete(Request $request, $id){
         $data= Barang::find($id);
 
         if(!empty($data)){

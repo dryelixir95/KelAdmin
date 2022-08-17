@@ -28,11 +28,17 @@
 
 						<div class="module">
 							<div class="module-head">
-								<h3>Add Film</h3>
+								<h3>Add Barang</h3>
 							</div>
 							<div class="module-body">
 									<form class="form-horizontal row-fluid" method="post" action="{{route('barang.store')}}">
                                         @csrf
+                                        <div class="control-group">
+											<label class="control-label" for="basicinput">ID</label>
+											<div class="controls">
+												<input type="text" id="basicinput" name="id" placeholder="" class="span8">
+											</div>
+                                        </div>
 										<div class="control-group">
 											<label class="control-label" for="basicinput">Nama</label>
 											<div class="controls">

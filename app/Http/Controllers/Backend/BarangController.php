@@ -21,6 +21,7 @@ class BarangController extends Controller
     public function BarangStore(Request $request){
 
         $data=new Barang();
+        $data->id=$request->id;
         $data->nama=$request->name;
         $data->jumlah=$request->jumlah;
         $data->harga=$request->harga;
