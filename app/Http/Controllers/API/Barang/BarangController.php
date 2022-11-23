@@ -40,7 +40,6 @@ class BarangController extends Controller
 
     public function BarangUpdate(Request $request, $id){
         $validateData = $request->validate([
-            'id' => 'required',
             'jumlah' => 'required',
             'harga' => 'required',
             'total' => 'required'
@@ -60,7 +59,9 @@ class BarangController extends Controller
 
         if(!empty($data)){
             $data->delete();
-            return response()->json($data, 201);
+            return response()->json([
+                'succes' => 'data sudah terhapus' 
+            ], 404);
         }
         else{
             return response()->json([
