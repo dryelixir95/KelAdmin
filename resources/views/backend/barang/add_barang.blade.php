@@ -33,12 +33,6 @@
 							<div class="module-body">
 									<form class="form-horizontal row-fluid" method="post" action="{{route('barang.store')}}">
                                         @csrf
-                                        <div class="control-group">
-											<label class="control-label" for="basicinput">ID</label>
-											<div class="controls">
-												<input type="text" id="basicinput" name="id" placeholder="" class="span8">
-											</div>
-                                        </div>
 										<div class="control-group">
 											<label class="control-label" for="basicinput">Nama</label>
 											<div class="controls">
@@ -62,7 +56,7 @@
                             									
 										<div class="control-group">
 											<div class="controls">
-												<button style="color: green;" type="submit" class="btn">Submit Form</button>
+												<button style="color: green;" name="submit" type="submit" class="btn">Submit Form</button>
 											</div>
 										</div>
 									</form>

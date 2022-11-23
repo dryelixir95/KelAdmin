@@ -21,12 +21,11 @@ class BarangController extends Controller
     public function BarangStore(Request $request){
 
         $data=new Barang();
-        $data->id=$request->id;
         $data->nama=$request->nama;
         $data->jumlah=$request->jumlah;
         $data->harga=$request->harga;
         $data->total=($request->harga*$request->jumlah);
-        if ($request->id== "" or $request->nama== "" or $request->jumlah== "" or $request->harga== ""){
+        if ($request->nama== "" or $request->jumlah== "" or $request->harga== ""){
             return redirect()->route('barang.add')->with('info','terdapat kolom yang kosong');
         }
         $data->save();
