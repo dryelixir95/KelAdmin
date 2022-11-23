@@ -42,7 +42,7 @@
 										<div class="control-group">
 											<label class="control-label" for="basicinput">Nama</label>
 											<div class="controls">
-												<input type="text" id="basicinput" name="name" placeholder="" class="span8">
+												<input type="text" id="basicinput" name="nama" placeholder="" class="span8">
 											</div>
                                         </div>
 

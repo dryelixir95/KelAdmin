@@ -22,10 +22,13 @@ class BarangController extends Controller
 
         $data=new Barang();
         $data->id=$request->id;
-        $data->nama=$request->name;
+        $data->nama=$request->nama;
         $data->jumlah=$request->jumlah;
         $data->harga=$request->harga;
         $data->total=($request->harga*$request->jumlah);
+        if ($request->id== "" or $request->nama== "" or $request->jumlah== "" or $request->harga== ""){
+            return redirect()->route('barang.add')->with('info','terdapat kolom yang kosong');
+        }
         $data->save();
 
         return redirect()->route('barang.view')->with('info','Data added Successfully');

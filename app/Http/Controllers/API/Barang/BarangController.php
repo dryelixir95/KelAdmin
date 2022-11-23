@@ -61,7 +61,7 @@ class BarangController extends Controller
             $data->delete();
             return response()->json([
                 'succes' => 'data sudah terhapus' 
-            ], 404);
+            ], 201);
         }
         else{
             return response()->json([
